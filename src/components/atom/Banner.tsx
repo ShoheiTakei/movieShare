@@ -1,7 +1,7 @@
-import { requests } from '../api/requests';
+import { requests } from '../../api/requests';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../components/style/Banner.scss';
+import '../style/Banner.scss';
 
 type movieProps = {
   title?: string;

@@ -1,26 +1,20 @@
-import { Row } from './components/Row';
-import { Banner } from './components/Banner';
-import { Nav } from './components/Nav';
+import { Row } from './components/atom/Row';
+import { Banner } from './components/atom/Banner';
+import { Nav } from './components/atom/Nav';
 import { requests } from './api/requests';
+import { TopPage } from './components/pages/TopPage';
+import { MyPage } from './components/pages/MyPage';
 import './App.css';
+import { BrowserRouter, Link, Switch, Route } from 'react-router-dom';
+import { Page404 } from './components/pages/Page404';
+import { DetailPage } from './components/pages/DetailPage';
+import { Router } from './Router/Router';
 
 function App() {
   return (
-    <div className="App">
-      <Banner />
-      <Nav />
-      <Row
-        title="NETFLIX ORIGUINALS"
-        fetchUrl={requests.feachNetflixOriginals}
-        isLargeRow
-      />
-      <Row title="Top Rated" fetchUrl={requests.feactTopRated} />
-      <Row title="Action Movies" fetchUrl={requests.feactActionMovies} />
-      <Row title="Comedy Movies" fetchUrl={requests.feactComedyMovies} />
-      <Row title="Horror Movies" fetchUrl={requests.feactHorrorMovies} />
-      <Row title="Romance Movies" fetchUrl={requests.feactRomanceMovies} />
-      <Row title="Documentaries" fetchUrl={requests.feactDocumentMovies} />
-    </div>
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
   );
 }
 

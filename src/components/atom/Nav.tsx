@@ -1,5 +1,8 @@
-import { useState, useEffect } from 'react';
-import './style/Nav.scss';
+import { useState, useEffect, useCallback } from 'react';
+import '../style/Nav.scss';
+import { useHistory } from 'react-router';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 type Props = {
   className?: string;
@@ -7,6 +10,10 @@ type Props = {
 
 export const Nav = (props: Props) => {
   const [show, setShow] = useState(false);
+
+  const history = useHistory();
+  const onClickMyPage = useCallback(() => history.push('/mypage'), []);
+
   useEffect(() => {
     const handleShow = () => {
       if (window.scrollY > 100) {
@@ -23,16 +30,21 @@ export const Nav = (props: Props) => {
   }, []);
   return (
     <div className={`Nav ${show && 'Nav-black'}`}>
-      <img
+      <SImage
         className="Nav-logo"
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1920px-Netflix_2015_logo.svg.png"
         alt="Netflix Logo"
       />
-      <img
+      <SImage
         className="Nav-avater"
         src="https://i.pinimg.com/originals/0d/dc/ca/0ddccae723d85a703b798a5e682c23c1.png"
         alt="Avatar"
+        onClick={onClickMyPage}
       />
     </div>
   );
 };
+
+const SImage = styled.img`
+  cursor: pointer;
+`;

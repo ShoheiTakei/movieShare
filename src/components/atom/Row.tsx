@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import '../components/style/Row.scss';
-import YouTube from 'react-youtube';
+import '../style/Row.scss';
+import { useHistory } from 'react-router';
 
 const base_url = 'https://image.tmdb.org/t/p/original';
 
@@ -21,18 +21,12 @@ type Movie = {
   backdrop_path: string;
 };
 
-//trailerのoption
-type Options = {
-  height: string;
-  width: string;
-  playerVars: {
-    autoplay: 0 | 1 | undefined;
-  };
-};
-
 export const Row = ({ title, fetchUrl, isLargeRow }: Props) => {
   const [movies, setMovies] = useState<Movie[]>([]);
-  const [trailerUrl, setTrailerUrl] = useState<string | null>('');
+  const history = useHistory();
+  const onClickMovie = () => {
+    history.push('/detail');
+  };
 
   //urlが更新される度に
   useEffect(() => {
@@ -43,24 +37,6 @@ export const Row = ({ title, fetchUrl, isLargeRow }: Props) => {
     }
     fetchData();
   }, [fetchUrl]);
-
-  const opts: Options = {
-    height: '390',
-    width: '640',
-    playerVars: {
-      // https://developers.google.com/youtube/player_parameters
-      autoplay: 1,
-    },
-  };
-
-  const handleClick = async (movie: Movie) => {
-    if (trailerUrl) {
-      setTrailerUrl('');
-    } else {
-      let trailerurl = await axios.get(`/movie/${movie.id}/videos?api_key=~~~`);
-      setTrailerUrl(trailerurl.data.results[0]?.key);
-    }
-  };
 
   return (
     <div className="Row">
@@ -75,11 +51,10 @@ export const Row = ({ title, fetchUrl, isLargeRow }: Props) => {
               isLargeRow ? movie.poster_path : movie.backdrop_path
             }`}
             alt={movie.name}
-            onClick={() => handleClick(movie)}
+            onClick={onClickMovie}
           />
         ))}
       </div>
-      {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
     </div>
   );
 };
