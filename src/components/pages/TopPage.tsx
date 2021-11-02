@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { requests } from '../../api/requests';
-import { Banner } from '../atom/Banner';
-import { Nav } from '../atom/Nav';
-import { Row } from '../atom/Row';
+import { Banner } from '../atomic/molecules/Banner';
+import { Nav } from '../atomic/molecules/Nav';
+import { Row } from '../atomic/molecules/Row';
 
 export const TopPage = () => {
   return (
