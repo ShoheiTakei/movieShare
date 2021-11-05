@@ -2,6 +2,7 @@ import { requests } from '../../../api/requests';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../style/Banner.scss';
+import { UserDetailModal } from '../organisms/user/UserDetailModal';
 
 type movieProps = {
   title?: string;
@@ -39,27 +40,37 @@ export const Banner = () => {
   }
 
   return (
-    <header
-      className="Banner"
-      style={{
-        backgroundSize: 'cover',
-        backgroundImage: `url("https://image.tmdb.org/t/p/original${movie?.backdrop_path}")`,
-        backgroundPosition: 'center center',
-      }}
-    >
-      <div className="Banner-contents">
-        <h1 className="banner-title">
-          {movie?.title || movie?.name || movie?.orignal_name}
-        </h1>
-        <div className="Banner-buttons">
-          <button className="Banner-button">Play</button>
-          <button className="Banner-button">My List</button>
+    <>
+      <header
+        className="Banner"
+        style={{
+          backgroundSize: 'cover',
+          backgroundImage: `url("https://image.tmdb.org/t/p/original${movie?.backdrop_path}")`,
+          backgroundPosition: 'center center',
+        }}
+      >
+        <div className="Banner-contents">
+          <h1 className="banner-title">
+            {movie?.title || movie?.name || movie?.orignal_name}
+          </h1>
+          <div className="Banner-buttons">
+            <button className="Banner-button">Play</button>
+            <button className="Banner-button">My List</button>
+          </div>
+
+          <h1 className="Banner-description">
+            {truncate(movie?.overview, 150)}
+          </h1>
         </div>
 
-        <h1 className="Banner-description">{truncate(movie?.overview, 150)}</h1>
-      </div>
-
-      <div className="Banner-fadeBottom" />
-    </header>
+        <div className="Banner-fadeBottom" />
+      </header>
+      {/* <UserDetailModal
+        isOpen={false}
+        onClose={function (): void {
+          throw new Error('Function not implemented.');
+        }}
+      /> */}
+    </>
   );
 };

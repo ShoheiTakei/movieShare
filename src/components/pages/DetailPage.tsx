@@ -1,9 +1,22 @@
 import { useLocation } from 'react-router';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import '../../App.css';
 import { TopMenu } from '../atomic/template/Header';
 import { PrimaryButton } from '../atomic/atom/button/PrimaryButton';
+import {
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+} from '@chakra-ui/modal';
+import { useDisclosure } from '@chakra-ui/hooks';
+import { Stack } from '@chakra-ui/layout';
+import { FormControl, FormLabel } from '@chakra-ui/form-control';
+import { Input } from '@chakra-ui/input';
+import { UserDetailModal } from '../atomic/organisms/user/UserDetailModal';
 
 type Movie = {
   id: string;
@@ -17,9 +30,12 @@ type Movie = {
 const base_url = 'https://image.tmdb.org/t/p/original';
 
 export const DetailPage = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const location = useLocation();
   const [resultSet, setResultSet] = useState<any>(location.state);
   console.log(resultSet);
+
+  const onClickList = useCallback(() => onOpen(), []);
 
   return (
     <>
@@ -32,10 +48,13 @@ export const DetailPage = () => {
           <SWrapper>
             <h1>{resultSet.name}</h1>
             <p>{resultSet.overview}</p>
-            <PrimaryButton>マイリストへ追加</PrimaryButton>
+            <PrimaryButton onClick={onClickList}>
+              マイリストへ追加
+            </PrimaryButton>
           </SWrapper>
         </SContainer>
       </SAll>
+      <UserDetailModal isOpen={isOpen} onClose={onClose} />
     </>
   );
 };
@@ -63,9 +82,9 @@ const SImg = styled.img`
 `;
 
 const SImgWrapper = styled.div`
-  height: 800px;
-  width: 700px;
-  margin: 0 200px;
+  height: 900px;
+  width: 900px;
+  margin: 0 100px;
 `;
 
 const SWrapper = styled.div`

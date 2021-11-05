@@ -1,10 +1,18 @@
 import { Button, ChakraProvider } from '@chakra-ui/react';
+import { FC } from 'react';
 
-export const PrimaryButton = (props: { children: any }) => {
-  const { children } = props;
+type Props = {
+  children: string;
+  onClick: () => void;
+};
+
+export const PrimaryButton: FC<Props> = (props) => {
+  const { children, onClick } = props;
   return (
     <ChakraProvider>
-      <Button colorScheme="blue">{children}</Button>
+      <Button onClick={onClick} colorScheme="blue">
+        {children}
+      </Button>
     </ChakraProvider>
   );
 };
