@@ -7,6 +7,12 @@ import { Row } from '../atomic/molecules/Row';
 export const TopPage = () => {
   return (
     <div>
+      <script src="bower_components/firebaseui/dist/firebaseui.js"></script>
+      <link
+        type="text/css"
+        rel="stylesheet"
+        href="bower_components/firebaseui/dist/firebaseui.css"
+      />
       <div className="App">
         <Banner />
         <Nav />

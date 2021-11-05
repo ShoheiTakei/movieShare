@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router';
 import { useState } from 'react';
 import styled from 'styled-components';
 import '../../App.css';
 import { TopMenu } from '../atomic/template/Header';
+import { PrimaryButton } from '../atomic/atom/button/PrimaryButton';
 
 type Movie = {
   id: string;
@@ -32,6 +32,7 @@ export const DetailPage = () => {
           <SWrapper>
             <h1>{resultSet.name}</h1>
             <p>{resultSet.overview}</p>
+            <PrimaryButton>マイリストへ追加</PrimaryButton>
           </SWrapper>
         </SContainer>
       </SAll>
@@ -71,4 +72,8 @@ const SWrapper = styled.div`
   padding: 200px 100px;
   height: 400px;
   width: 400px;
+
+  h1 {
+    font-size: 30px;
+  }
 `;
