@@ -1,13 +1,13 @@
 import { DetailPage } from '../components/pages/DetailPage';
 import { MyPage } from '../components/pages/MyPage';
 import { Page404 } from '../components/pages/Page404';
-import { TopPage } from '../components/pages/TopPage';
+import { HomePage } from '../components/pages/HomePage';
 
 export const homeRoutes = [
   {
     path: '/home',
     exact: false,
-    children: <TopPage />,
+    children: <HomePage />,
   },
   {
     path: '/mypage',

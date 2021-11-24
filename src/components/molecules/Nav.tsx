@@ -1,8 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
-import '../../style/Nav.scss';
+import '../styles/Nav.scss';
 import { useHistory } from 'react-router';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 type Props = {
   className?: string;

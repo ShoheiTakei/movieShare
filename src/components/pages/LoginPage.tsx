@@ -1,21 +1,19 @@
-// // Import the functions you need from the SDKs you need
-// import { initializeApp } from 'firebase/app';
-// // TODO: Add SDKs for Firebase products that you want to use
-// // https://firebase.google.com/docs/web/setup#available-libraries
-
-// // Your web app's Firebase configuration
-// const firebaseConfig = {
-//   apiKey: 'AIzaSyAQ00DfHH6fG2s-0GcwP30u-EUwdmuXoHk',
-//   authDomain: 'netflix-clone-bc1db.firebaseapp.com',
-//   projectId: 'netflix-clone-bc1db',
-//   storageBucket: 'netflix-clone-bc1db.appspot.com',
-//   messagingSenderId: '425598756013',
-//   appId: '1:425598756013:web:0bf9b0887757a23ba09224',
-// };
-
-// // Initialize Firebase
-// const app = initializeApp(firebaseConfig);
+import Register from './RegisterPage';
+import Home from './Home';
+import { Login } from '../pages/Login';
+import { AuthProvider } from '../../Providers/AuthContext';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 export const LoginPage = () => {
-  return <></>;
+  return (
+    <AuthProvider>
+      <div style={{ margin: '2em' }}>
+        <BrowserRouter>
+          <Route exact path="/" component={Home} />
+          <Route path="/register" component={Register} />
+          <Route path="/login" component={Login} />
+        </BrowserRouter>
+      </div>
+    </AuthProvider>
+  );
 };

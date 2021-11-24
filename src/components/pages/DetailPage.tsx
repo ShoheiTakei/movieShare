@@ -2,8 +2,8 @@ import { useLocation } from 'react-router';
 import { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import '../../App.css';
-import { TopMenu } from '../atomic/template/Header';
-import { PrimaryButton } from '../atomic/atom/button/PrimaryButton';
+import { TopMenu } from '../templates/Header';
+import { PrimaryButton } from '../atoms/button/PrimaryButton';
 import {
   Modal,
   ModalBody,
@@ -16,7 +16,7 @@ import { useDisclosure } from '@chakra-ui/hooks';
 import { Stack } from '@chakra-ui/layout';
 import { FormControl, FormLabel } from '@chakra-ui/form-control';
 import { Input } from '@chakra-ui/input';
-import { UserDetailModal } from '../atomic/organisms/user/UserDetailModal';
+import { UserDetailModal } from '../organisms/user/UserDetailModal';
 
 type Movie = {
   id: string;

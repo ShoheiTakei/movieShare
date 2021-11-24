@@ -1,7 +1,7 @@
-import { requests } from '../../../api/requests';
+import { requests } from '../../api/requests';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../../style/Banner.scss';
+import '../styles/Banner.scss';
 import { UserDetailModal } from '../organisms/user/UserDetailModal';
 
 type movieProps = {

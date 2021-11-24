@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { requests } from '../../api/requests';
-import { Banner } from '../atomic/molecules/Banner';
-import { Nav } from '../atomic/molecules/Nav';
-import { Row } from '../atomic/molecules/Row';
+import { Banner } from '../molecules/Banner';
+import { Nav } from '../molecules/Nav';
+import { Row } from '../molecules/Row';
 
-export const TopPage = () => {
+export const HomePage = () => {
   return (
     <div>
       <script src="bower_components/firebaseui/dist/firebaseui.js"></script>

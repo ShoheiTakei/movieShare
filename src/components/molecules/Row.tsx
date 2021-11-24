@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import '../../style/Row.scss';
+import '../styles/Row.scss';
 import { useHistory } from 'react-router';
 
 const base_url = 'https://image.tmdb.org/t/p/original';

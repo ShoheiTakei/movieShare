@@ -1,4 +1,4 @@
-import { TopMenu } from '../atomic/template/Header';
+import { TopMenu } from '../templates/Header';
 
 export const MyPage = () => {
   return (
