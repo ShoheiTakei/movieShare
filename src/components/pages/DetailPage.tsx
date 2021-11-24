@@ -58,7 +58,7 @@ export const DetailPage = () => {
     </>
   );
 };
-const SAll = styled.div`
+export const SAll = styled.div`
   color: #fff;
   background-color: #111;
 

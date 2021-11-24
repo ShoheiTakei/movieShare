@@ -3,7 +3,7 @@ import { FC } from 'react';
 
 type Props = {
   children: string;
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 export const PrimaryButton: FC<Props> = (props) => {
