@@ -4,18 +4,7 @@ import styled from 'styled-components';
 import '../../App.css';
 import { TopMenu } from '../templates/Header';
 import { PrimaryButton } from '../atoms/button/PrimaryButton';
-import {
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalHeader,
-  ModalOverlay,
-} from '@chakra-ui/modal';
 import { useDisclosure } from '@chakra-ui/hooks';
-import { Stack } from '@chakra-ui/layout';
-import { FormControl, FormLabel } from '@chakra-ui/form-control';
-import { Input } from '@chakra-ui/input';
 import { UserDetailModal } from '../organisms/user/UserDetailModal';
 
 type Movie = {
@@ -33,6 +22,7 @@ export const DetailPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const location = useLocation();
   const [resultSet, setResultSet] = useState<any>(location.state);
+
   console.log(resultSet);
 
   const onClickList = useCallback(() => onOpen(), []);
@@ -58,12 +48,13 @@ export const DetailPage = () => {
     </>
   );
 };
+
 export const SAll = styled.div`
   color: #fff;
   background-color: #111;
-
   .Link {
     color: red;
+    padding-left: 30px;
   }
 `;
 
@@ -91,7 +82,6 @@ const SWrapper = styled.div`
   padding: 200px 100px;
   height: 400px;
   width: 400px;
-
   h1 {
     font-size: 30px;
   }
