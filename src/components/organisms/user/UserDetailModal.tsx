@@ -29,7 +29,9 @@ export const UserDetailModal: FC<Props> = memo((props) => {
   const addList = () => {
     // 配列の中にinputタグの中身を追加していく
     const newLists = [...arrList, value];
-    setArrList(newLists);
+    value === ''
+      ? alert('マイリスト名を入力してください')
+      : setArrList(newLists);
     setValue('');
   };
   return (
