@@ -10,6 +10,7 @@ import {
   ModalOverlay,
 } from '@chakra-ui/modal';
 import { Button, ChakraProvider } from '@chakra-ui/react';
+import styled from 'styled-components';
 import { FC, memo, useCallback, useEffect, useState } from 'react';
 
 type Props = {
@@ -34,6 +35,13 @@ export const UserDetailModal: FC<Props> = memo((props) => {
       : setArrList(newLists);
     setValue('');
   };
+  const changeNameList = () => {
+    alert('名前変更ボタンが押された');
+  };
+  const deleteList = () => {
+    // 配列から特定の要素のみを削除したい
+    // 要素の指定方法を考える
+  };
   return (
     <ChakraProvider>
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -51,13 +59,36 @@ export const UserDetailModal: FC<Props> = memo((props) => {
                   size="md"
                   alt="マイリスト名"
                 />
-                <ul>
-                  {arrList.map((listName: string) => {
-                    return <li>{listName}</li>;
+                <Sul>
+                  {arrList.map((listName: string, index) => {
+                    return (
+                      <SnewListWrapper>
+                        <Sli key={index}>{listName}</Sli>
+                        <SnewButtonWrapper>
+                          <Button
+                            onClick={changeNameList}
+                            fontSize="1rem"
+                            size="m"
+                          >
+                            名前変更
+                          </Button>
+                          <Button
+                            onClick={deleteList}
+                            fontSize="1rem"
+                            size="m"
+                            ml={2}
+                          >
+                            削除
+                          </Button>
+                        </SnewButtonWrapper>
+                      </SnewListWrapper>
+                    );
                   })}
-                </ul>
+                </Sul>
               </FormControl>
-              <Button onClick={addList}>保存</Button>
+              <Button mt={2} onClick={addList}>
+                保存
+              </Button>
             </Stack>
           </ModalBody>
         </ModalContent>
@@ -65,3 +96,17 @@ export const UserDetailModal: FC<Props> = memo((props) => {
     </ChakraProvider>
   );
 });
+
+const Sul = styled.ul`
+  padding: 20px;
+`;
+const Sli = styled.li`
+  padding: 0.5em 0.5em 0.5em;
+`;
+
+const SnewListWrapper = styled.div`
+  display: flex;
+`;
+const SnewButtonWrapper = styled.div`
+  margin-top: 6px;
+`;
