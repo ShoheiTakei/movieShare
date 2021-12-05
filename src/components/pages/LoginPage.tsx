@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
+
 import styled from 'styled-components';
 import {
   Box,
@@ -18,16 +20,18 @@ export const LoginPage = () => {
   const [saveClick, setSaveClick] = useState(true);
   const [mail, setMail] = useState('');
   const [pass, setPass] = useState('');
-  const handleClick = () => setShowPs(![showPs]);
-  const onChange = (e: { target: { value: React.SetStateAction<string> } }) => {
-    // 条件分岐でメアドとパスワードのinputが中身が空文字ではない場合に保存ボタンが押せる様にする
-    console.log('変更を検知');
-    setMail(e.target.value);
-    console.log(mail);
-    setPass(e.target.value);
-    console.log(pass);
+  useEffect(() => {
+    const fragMail = mail === '';
+    const fragPass = pass === '';
+    fragMail === fragPass ? setSaveClick(false) : setSaveClick(true);
+  }, [mail, pass]);
+  const handleClick = () => setShowPs(!showPs);
+  const history = useHistory();
+  const submit = () => {
+    if (mail === 'admin') {
+      history.push({ pathname: '/home' });
+    }
   };
-  // inputの中身が空文字の場合は、ボタンをクリックできない様にする
   // bug 表示フラグが発火しない
   // Enterを押したらボタンが発火する様にする
   // ボタンを押した時に起こる再レンダリングを防ぐ
@@ -36,17 +40,21 @@ export const LoginPage = () => {
     <>
       <ChakraProvider>
         <Flex justify="center">
-          <Box align="center" w="400px">
-            <Stack spacing={6} mt="300px">
+          <Box align="center" maxW="100%">
+            <Stack spacing={6}>
               <Text fontSize="3xl">サインイン</Text>
               <Input
                 placeholder="メールアドレス"
-                onChange={onChange}
+                onChange={(e) => {
+                  setMail(e.target.value);
+                }}
                 mail={mail}
               />
               <InputGroup>
                 <Input
-                  onChange={onChange}
+                  onChange={(e) => {
+                    setPass(e.target.value);
+                  }}
                   pass={pass}
                   type={showPs ? 'text' : 'password'}
                   placeholder="パスワード"
@@ -57,8 +65,10 @@ export const LoginPage = () => {
                   </Button>
                 </InputRightElement>
               </InputGroup>
-              <Button isDisabled={saveClick}>保存</Button>
-              {/* <Link to="/home" /> */}
+              <Button isDisabled={saveClick} onClick={submit}>
+                保存
+              </Button>
+              <Text>Copyright @ TAKEI</Text>
             </Stack>
           </Box>
         </Flex>
