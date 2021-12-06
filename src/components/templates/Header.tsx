@@ -6,7 +6,7 @@ export const TopMenu = (props: any) => {
     <>
       <SNav>
         <h1>{props.children}</h1>
-        <SLink to="/">TOP</SLink>
+        <SLink to="/home">TOP</SLink>
       </SNav>
     </>
   );
