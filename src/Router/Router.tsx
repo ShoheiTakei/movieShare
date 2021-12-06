@@ -5,11 +5,13 @@ import { Page404 } from '../components/pages/Page404';
 import { HomePage } from '../components/pages/HomePage';
 import { homeRoutes } from './HomeRoutes';
 import { LoginPage } from '../components/pages/LoginPage';
+import { SignUpPage } from '../components/pages/SignUpPage';
 
 export const Router = () => {
   return (
     <Switch>
       <Route exact path="/" render={() => <LoginPage />} />
+      <Route path="/signup" render={() => <SignUpPage />} />
       <Route path="/home" render={() => <HomePage />} />
       <Route path="/mypage" render={() => <MyPage />} />
       <Route path="/detail" render={() => <DetailPage />} />

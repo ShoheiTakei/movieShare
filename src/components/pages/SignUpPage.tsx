@@ -15,15 +15,19 @@ import {
   Text,
 } from '@chakra-ui/react';
 
-export const LoginPage = () => {
+export const SignUpPage = () => {
+  const [name, setName] = useState('');
   const [mail, setMail] = useState('');
   const [pass, setPass] = useState('');
   const [showPs, setShowPs] = useState(false);
   const [saveClick, setSaveClick] = useState(true);
   useEffect(() => {
+    const fragName = name === '';
     const fragMail = mail === '';
     const fragPass = pass === '';
-    fragMail === fragPass ? setSaveClick(false) : setSaveClick(true);
+    (fragName === fragMail) === fragPass
+      ? setSaveClick(true)
+      : setSaveClick(false);
   }, [mail, pass]);
   const handleClick = () => setShowPs(!showPs);
   // 一時的にHomeへ遷移する手段として書いてる
@@ -43,7 +47,14 @@ export const LoginPage = () => {
         <Flex justify="center">
           <Box align="center" maxW="100%">
             <Stack spacing={5}>
-              <Text fontSize="3xl">サインイン</Text>
+              <Text fontSize="3xl">サインアップ</Text>
+              <Input
+                placeholder="ユーザーネーム"
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+                name={name}
+              />
               <Input
                 placeholder="メールアドレス"
                 onChange={(e) => {
@@ -67,10 +78,10 @@ export const LoginPage = () => {
                 </InputRightElement>
               </InputGroup>
               <Button isDisabled={saveClick} onClick={submit}>
-                保存
+                登録
               </Button>
               <Stack spacing={3}>
-                <Link to="/signup">アカウントを作成する</Link>
+                <Link to="/">サインイン画面に戻る</Link>
                 <Text>Copyright @ TAKEI</Text>
               </Stack>
             </Stack>
