@@ -1,4 +1,4 @@
-const API_KEY = '3f02854aabb8d05cb35327537b09e802';
+const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 
 export const requests = {
   feachTrending: `https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}&language=ja`,
