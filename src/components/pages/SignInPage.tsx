@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 
-import styled from 'styled-components';
 import {
   Box,
   Button,
@@ -15,11 +14,13 @@ import {
   Text,
 } from '@chakra-ui/react';
 
-export const LoginPage = () => {
+export const SignInPage = () => {
   const [mail, setMail] = useState('');
   const [pass, setPass] = useState('');
   const [showPs, setShowPs] = useState(false);
   const [saveClick, setSaveClick] = useState(true);
+  // useRefを使い、inputタグで入力終了時にEnterを押したら次のinputタグにファーカスを合わせたい
+  const inputEl = useRef(null);
   useEffect(() => {
     const fragMail = mail === '';
     const fragPass = pass === '';
