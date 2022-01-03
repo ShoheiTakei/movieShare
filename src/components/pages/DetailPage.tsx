@@ -2,7 +2,7 @@ import { useLocation } from 'react-router';
 import { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import '../../App.css';
-import { TopMenu } from '../templates/Header';
+import { TopMenu } from '../templates/TopMenu';
 import { PrimaryButton } from '../atoms/button/PrimaryButton';
 import { useDisclosure } from '@chakra-ui/hooks';
 import { UserDetailModal } from '../organisms/user/UserDetailModal';
@@ -30,7 +30,7 @@ export const DetailPage = () => {
   return (
     <>
       <SAll>
-        <TopMenu>映画詳細ページ</TopMenu>
+        <TopMenu />
         <SContainer>
           <SImgWrapper>
             <SImg src={`${base_url}${resultSet.poster_path}`} />

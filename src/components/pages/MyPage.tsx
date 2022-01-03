@@ -1,4 +1,4 @@
-import { TopMenu } from '../templates/Header';
+import { TopMenu } from '../templates/TopMenu';
 import styled from 'styled-components';
 import { PrimaryButton } from '../atoms/button/PrimaryButton';
 import { ChakraProvider, Input } from '@chakra-ui/react';
@@ -8,7 +8,7 @@ export const MyPage = () => {
   return (
     <>
       <SAll>
-        <TopMenu>マイページ</TopMenu>
+        <TopMenu />
         <SmyPageWrapper>
           <SaccountSetting>
             <h1>アカウント設定</h1>
