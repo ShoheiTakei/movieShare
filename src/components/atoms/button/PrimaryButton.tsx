@@ -10,7 +10,7 @@ export const PrimaryButton: FC<Props> = (props) => {
   const { children, onClick } = props;
   return (
     <ChakraProvider>
-      <Button onClick={onClick} colorScheme="blue">
+      <Button onClick={onClick} colorScheme="blue" size="lg">
         {children}
       </Button>
     </ChakraProvider>
