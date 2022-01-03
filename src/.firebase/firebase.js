@@ -1,5 +1,7 @@
 import 'firebase/compat/auth';
 import firebase from 'firebase/compat/app';
+import { initializeApp } from 'firebase/app';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -10,6 +12,9 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_FIREBASE_SENDER_ID,
 };
 
-firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const auth = getAuth();
 
-export const auth = firebase.auth();
+export const signup = (email, password) => {
+  return createUserWithEmailAndPassword(auth, email, password);
+};

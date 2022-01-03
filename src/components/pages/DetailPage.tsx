@@ -33,7 +33,7 @@ export const DetailPage = () => {
         <TopMenu>映画詳細ページ</TopMenu>
         <SContainer>
           <SImgWrapper>
-            <SImg src={`${base_url}${resultSet.backdrop_path}`} />
+            <SImg src={`${base_url}${resultSet.poster_path}`} />
           </SImgWrapper>
           <SWrapper>
             <h1>{resultSet.name}</h1>
@@ -52,37 +52,36 @@ export const DetailPage = () => {
 export const SAll = styled.div`
   color: #fff;
   background-color: #111;
-  .Link {
-    color: red;
-    padding-left: 30px;
-  }
 `;
 
 const SContainer = styled.div`
+  padding: 4.3rem;
   background-color: gray;
-  margin: 0 auto;
   display: flex;
-  height: max-height;
-  width: max-width;
 `;
 
 const SImg = styled.img`
-  object-fit: cover;
+  object-fit: contain;
   height: 100%;
   width: 100%;
 `;
 
 const SImgWrapper = styled.div`
-  height: 900px;
-  width: 900px;
-  margin: 0 100px;
+  height: 800px;
+  width: 700px;
+  margin: 0 3rem;
 `;
 
 const SWrapper = styled.div`
-  padding: 200px 100px;
-  height: 400px;
-  width: 400px;
+  padding: 0.2rem 5rem;
+  height: 40rem;
+  width: 40rem;
   h1 {
+    font-size: 60px;
+    padding-bottom: 20px;
+  }
+  p {
     font-size: 30px;
+    padding-bottom: 30px;
   }
 `;
