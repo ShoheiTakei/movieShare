@@ -1,6 +1,5 @@
 import { requests } from '../../api/requests';
 import { Banner } from '../molecules/Banner';
-import { Nav } from '../molecules/Nav';
 import { Row } from '../molecules/Row';
 import { TopMenu } from '../templates/TopMenu';
 
