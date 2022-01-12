@@ -3,6 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import '../styles/Row.scss';
 import { useHistory } from 'react-router';
+import Skeleton from '@mui/material/Skeleton';
 
 const base_url = 'https://image.tmdb.org/t/p/original';
 
@@ -22,18 +23,20 @@ type Movie = {
 };
 
 export const Row = ({ title, fetchUrl, isLargeRow }: Props) => {
+  const [loading, setLoading] = useState(false);
   const [movies, setMovies] = useState<Movie[]>([]);
-  console.log(movies);
   const history = useHistory();
   const onClickMovie = (movie: Movie) => {
     history.push({ pathname: '/detail', state: movie });
   };
-
+  console.log(movies);
   //urlが更新される度に
   useEffect(() => {
+    setLoading(true);
     async function fetchData() {
       const request = await axios.get(fetchUrl);
       setMovies(request.data.results);
+      setLoading(false);
       return request;
     }
     fetchData();
@@ -42,20 +45,24 @@ export const Row = ({ title, fetchUrl, isLargeRow }: Props) => {
   return (
     <div className="Row">
       <h2>{title}</h2>
-      <div className="Row-posters">
-        {/* ポスターコンテンツ */}
-        {movies.map((movie, index) => (
-          <img
-            key={movie.id}
-            className={`Row-poster ${isLargeRow && 'Row-poster-large'}`}
-            src={`${base_url}${
-              isLargeRow ? movie.poster_path : movie.backdrop_path
-            }`}
-            alt={movie.name}
-            onClick={() => onClickMovie(movie)}
-          />
-        ))}
-      </div>
+      {loading ? (
+        <Skeleton variant="rectangular" width={210} height={118} />
+      ) : (
+        <div className="Row-posters">
+          {/* ポスターコンテンツ */}
+          {movies.map((movie, key) => (
+            <img
+              key={key}
+              className={`Row-poster ${isLargeRow && 'Row-poster-large'}`}
+              src={`${base_url}${
+                isLargeRow ? movie.poster_path : movie.backdrop_path
+              }`}
+              alt={movie.name}
+              onClick={() => onClickMovie(movie)}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

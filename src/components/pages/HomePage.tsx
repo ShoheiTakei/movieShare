@@ -14,7 +14,7 @@ export const HomePage = () => {
       />
       <div className="App">
         <TopMenu />
-        <Banner />
+        {/* <Banner /> */}
         <Row
           title="NETFLIX ORIGUINALS"
           fetchUrl={requests.feachNetflixOriginals}
