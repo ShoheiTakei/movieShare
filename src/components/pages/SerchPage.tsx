@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { memo, useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { API_KEY } from '../../api/requests';
 
 export const SearchPage = memo(() => {
   const [searchResults, setSearchResults] = useState([]);
@@ -27,7 +28,7 @@ export const SearchPage = memo(() => {
     console.log('fetchData実行されました');
     await axios
       .get(
-        `https://api.themoviedb.org/3/search/movie?api_key=3f02854aabb8d05cb35327537b09e802&language=ja-JA&query=%${inputText}&page=1&include_adult=false`
+        `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=ja-JA&query=%${inputText}&page=1&include_adult=false`
       )
       .then(function (response) {
         judgeResult(response.data.results);
