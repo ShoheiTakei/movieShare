@@ -19,7 +19,7 @@ type Movie = {
 const base_url = 'https://image.tmdb.org/t/p/original';
 
 export const DetailPage = () => {
-  // 0531テスト
+  // GitHub Desktop
   const { isOpen, onOpen, onClose } = useDisclosure();
   const location = useLocation();
   const [resultSet, setResultSet] = useState<any>(location.state);
